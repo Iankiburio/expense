@@ -1,6 +1,7 @@
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
+from datetime import datetime
 
 app = Flask(__name__)
 CORS(app)
@@ -14,7 +15,9 @@ class Expense(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(255), nullable=False)
     amount = db.Column(db.Float, nullable=False)
+    date_added = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
 
+db.drop_all()
 db.create_all()
 
 @app.route('/login', methods=['POST'])
@@ -27,16 +30,15 @@ def login():
 @app.route('/expenses', methods=['GET'])
 def get_expenses():
     expenses = Expense.query.all()
-    return jsonify([{'id': expense.id, 'description': expense.description, 'amount': expense.amount} for expense in expenses])
+    return jsonify([{'id': expense.id, 'description': expense.description, 'amount': expense.amount, 'date_added': expense.date_added} for expense in expenses])
 
 @app.route('/expenses', methods=['POST'])
 def add_expense():
     data = request.get_json()
-    new_expense = Expense(description=data['description'], amount=data['amount'])
+    new_expense = Expense(description=data['description'], amount=data['amount'], date_added=datetime.utcnow())
     db.session.add(new_expense)
     db.session.commit()
     return jsonify({'message': 'Expense added successfully'})
-
 
 @app.route('/expenses/<int:expense_id>', methods=['DELETE'])
 def delete_expense(expense_id):
