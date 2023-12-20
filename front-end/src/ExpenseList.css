@@ -1,0 +1,61 @@
+/* src/components/ExpenseList.css */
+
+/* Container styles */
+.containers {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* Header styles */
+  h2 {
+    color: #333;
+  }
+  
+  /* List styles */
+  ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 10px;
+  }
+  
+  /* Button styles */
+  button {
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  /* Total expense styles */
+  p {
+    margin-top: 20px;
+    font-weight: bold;
+  }
+  
+  /* Link button styles */
+  .link-button {
+    text-decoration: none;
+  }
+  
+  .link-button button {
+    background-color: #008CBA;
+  }
+  
+  .link-button button:hover {
+    background-color: #0077a3;
+  }
+  

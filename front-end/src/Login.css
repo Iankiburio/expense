@@ -1,15 +1,22 @@
+
 /* Login.css */
 
 .login-page {
   display: flex;
+  flex-direction: column; /* Align items in a column */
   justify-content: center;
   align-items: center;
   height: 100vh;
   background-color: black; /* Set the background color to black */
 }
 
-.container {
-  width: 300px; /* Set the width of the container */
+.containerz, .logo {
+  width: 400px; /* Set the width of the container and the logo */
+}
+
+.logo {
+  height: auto; /* Maintain aspect ratio */
+  margin-bottom: 0; /* Remove margin between the logo and the form */
 }
 
 .login-form {
